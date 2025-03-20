@@ -1,10 +1,10 @@
-package com.kunal_s.programming_assitant;
+package com.kunalS.programmingAssistant;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProgrammingAssitantApplicationTests {
+class ProgrammingAssistantApplicationTests {
 
 	@Test
 	void contextLoads() {
