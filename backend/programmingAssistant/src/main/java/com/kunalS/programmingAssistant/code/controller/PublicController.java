@@ -1,13 +1,12 @@
 package com.kunalS.programmingAssistant.controller;
 
-import com.kunalS.programmingAssistant.entity.Code;
-import com.kunalS.programmingAssistant.service.PublicControllerService;
+import com.kunalS.programmingAssistant.code.model.Code;
+import com.kunalS.programmingAssistant.code.service.PublicControllerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Base64;
 
