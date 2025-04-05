@@ -35,7 +35,7 @@ public class PublicControllerService {
                     .method("POST", HttpRequest.BodyPublishers.ofString(String.valueOf(json)))
                     .build();
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-//            Sy
+//
             return response.body();
         }
         catch (Exception e){

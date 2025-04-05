@@ -20,6 +20,18 @@ export default function RunButton() {
   const outputChange = useCodeStore((state)=>state.outputChange);
   const setOutputGif = useCodeStore((state)=>state.setOutputGif);
   const code = useCodeStore((state)=>state.code);
+  const inputT = useCodeStore((state)=>state.input);
+
+  //custom fetch to handle timeout
+  function fetchWithTimeout(resource: RequestInfo, options: RequestInit = {},timeout=8000) {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+  
+    return fetch(resource, {
+      ...options,
+      signal: controller.signal,
+    }).finally(() => clearTimeout(id));
+  }
 
   const runCode = async() => {
     try {
@@ -27,28 +39,38 @@ export default function RunButton() {
       //convert code to base64 format
       //send code to backend
       let encodedCode = btoa(code);
+      let encodedInputText = btoa(inputT);
       let requestCode = {
         "source_code":encodedCode,
-        "language_id":54
+        "language_id":54,
+        "stdin":encodedInputText
       }
-      const response = await fetch('http://localhost:8080/public/judgeCode', {
+      // const response = await fetchWithTimeout('http://localhost:8080/public/judgeCode', {
+      //                   method: 'POST',
+      //                   headers: {
+      //                     'Content-Type': 'application/json',
+      //                   },
+      //                   body: JSON.stringify(requestCode),
+      //                 })
+
+      const response = await fetchWithTimeout('http://localhost:8080/public/judgeCode', {
                         method: 'POST',
-                        headers: {
-                          'Content-Type': 'application/json',
-                        },
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(requestCode),
-                      })
+                      },8000);
       
       const data :JudgeResponse = await response.json();
       const decodeOutput = atob(data.stdout);
-      // console.log(decodeOutput);
-      setOutputGif(false);
+      
       outputChange(decodeOutput);
-      // setOutput(decodeOutput);
 
     }
-    catch(e){
+    catch(e:any){
         console.log(e);
+        outputChange("❌ Error: Could not reach the server. Please try again later.");
+    }
+    finally{
+      setOutputGif(false);
     }
   };
 

@@ -11,7 +11,7 @@ import InputText from "@/components/codeEditor/InputText";
 
 export default function CodeEditorPage() {
   return (
-    <div className="flex">
+    <div className="flex flex-row">
     
       <div className="w-3/4 p-4 justify-around">
         <CodeEditor/>
@@ -23,7 +23,6 @@ export default function CodeEditorPage() {
         <div >
           <InputText/>
           <Output/>
-          <Terminal/>
         </div>
       </div>
     </div>
