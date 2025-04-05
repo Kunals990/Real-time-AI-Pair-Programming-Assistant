@@ -1,4 +1,4 @@
-package com.kunalS.programmingAssistant.controller;
+package com.kunalS.programmingAssistant.code.controller;
 
 import com.kunalS.programmingAssistant.code.model.Code;
 import com.kunalS.programmingAssistant.code.service.PublicControllerService;

@@ -1,4 +1,4 @@
-package com.kunalS.programmingAssistant.code.entity;
+package com.kunalS.programmingAssistant.code.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
