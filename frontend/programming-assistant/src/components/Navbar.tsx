@@ -8,7 +8,8 @@ export default function Navbar() {
         <div>
           <Link href="/" className="px-4 hover:text-gray-300">Home</Link>
           <Link href="/editor" className="px-4 hover:text-gray-300">Editor</Link>
-          <Link href="/chat" className="px-4 hover:text-gray-300">AI Chat</Link>
+          <Link href="/chat" className="px-4 hover:text-gray-300">Chat</Link>
+          <Link href="/ai-chat" className="px-4 hover:text-gray-300">AI Chat</Link>
         </div>
       </nav>
     );

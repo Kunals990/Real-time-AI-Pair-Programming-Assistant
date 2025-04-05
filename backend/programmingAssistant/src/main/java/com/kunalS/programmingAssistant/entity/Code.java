@@ -10,5 +10,4 @@ public class Code {
     private int language_id;
     private String stdin;
 
-
 }

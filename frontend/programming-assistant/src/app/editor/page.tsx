@@ -12,18 +12,17 @@ import InputText from "@/components/codeEditor/InputText";
 export default function CodeEditorPage() {
   return (
     <div className="flex flex-row">
-    
+
       <div className="w-3/4 p-4 justify-around">
         <CodeEditor/>
-        <div className="flex justify-between mt-2">
           <RunButton  />
-        </div>
-
-        {/* Terminal and Output Window*/}
         <div >
           <InputText/>
           <Output/>
         </div>
+      </div>
+      <div>
+        
       </div>
     </div>
   );

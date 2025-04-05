@@ -25,7 +25,6 @@ public class PublicControllerService {
     public String judgeCode(Code code){
         try{
             ObjectMapper objectMapper = new ObjectMapper();
-//            code.setSource_code(Base64.getEncoder().encodeToString(code.getSource_code().getBytes()));
             String json = objectMapper.writeValueAsString(code);
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=true&wait=true&fields=stdout,stderr,status_id,language_id"))
@@ -35,15 +34,12 @@ public class PublicControllerService {
                     .method("POST", HttpRequest.BodyPublishers.ofString(String.valueOf(json)))
                     .build();
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-//
             return response.body();
         }
         catch (Exception e){
             System.out.println(e);
             return "error";
         }
-//        return response.body();
-//        return "hello";
 
     }
 
